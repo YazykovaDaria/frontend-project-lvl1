@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import readlineSync from 'readline-sync';
+import * as games from '../src/cli.js';
 
 const checkNumberEven = (number) => (number % 2 === 0 ? 'yes' : 'no');
 
@@ -9,16 +10,15 @@ const playBrainEven = () => {
   const userName = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${userName}!`);
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  const maxNumber = 100;
-  const minNumber = 1;
+  // не знаю как сделать эту часть экспортируемой чтобы сохранялось имя пользователя
   for (let counter = 1; counter < 4; counter += 1) {
-    const randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
-    console.log(`Question:${randomNumber}`);
+    const number = games.randomNumber();
+    console.log(`Question:${number}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    if (userAnswer === checkNumberEven(randomNumber)) {
+    if (userAnswer === checkNumberEven(number)) {
       console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${checkNumberEven(randomNumber)}'`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${checkNumberEven(number)}'`);
       return console.log(`Let's try again, ${userName}!`);
     }
   }
