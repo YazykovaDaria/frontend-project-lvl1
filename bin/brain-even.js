@@ -19,10 +19,10 @@ const playBrainEven = () => {
       console.log('Correct!');
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${checkNumberEven(randomNumber)}'`);
-      return `Let's try again, ${userName}!`;
+      return console.log(`Let's try again, ${userName}!`);
     }
   }
-  return `Congratulations, ${userName}!`;
+  return console.log(`Congratulations, ${userName}!`);
 };
 
 playBrainEven();
