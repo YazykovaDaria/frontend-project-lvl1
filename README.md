@@ -19,4 +19,4 @@ Run
 ```sh
 $ brain-even
 ```
-[![asciicast](https://asciinema.org/a/QLirRw0BB97leA1g3mpCvMWtj)](https://asciinema.org/a/QLirRw0BB97leA1g3mpCvMWtj)
+[![asciicast](https://asciinema.org/a/QLirRw0BB97leA1g3mpCvMWtj.svg)](https://asciinema.org/a/QLirRw0BB97leA1g3mpCvMWtj)
