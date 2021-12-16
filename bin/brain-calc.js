@@ -1,20 +1,46 @@
+#!/usr/bin/env node
+/* eslint-disable default-case */
 import readlineSync from 'readline-sync';
-import * as games from '../src/cli.js';
+import * as games from '../src/index.js';
 
-const operators = ['-', '+', '*'];
-const randomOperators = operators[Math.floor(Math.random() * operators.length)];
+const makeOperator = () => {
+  const operators = ['-', '+', '*'];
+  const randomOperator = operators[Math.floor(Math.random() * operators.length)];
+  return randomOperator;
+};
 
 const playBrainCalc = () => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${userName}!`);
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  console.log('What is the result of the expression?');
   for (let counter = 1; counter < 4; counter += 1) {
     const number1 = games.randomNumber();
     const number2 = games.randomNumber();
-    const operator = randomOperators;
+    const operator = makeOperator();
     const task = `${number1} ${operator} ${number2}`;
-    console.log(`Question:${task}`);
+    console.log(`${games.question}${task}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+    let correctAnswer;
+    switch (operator) {
+      case '+':
+        correctAnswer = number1 + number2;
+        break;
+      case '-':
+        correctAnswer = number1 - number2;
+        break;
+      case '*':
+        correctAnswer = number1 * number2;
+        break;
+        // почему проверка не срабатывает?
+    } if (userAnswer === correctAnswer) {
+      console.log(games.correct);
+    } else {
+      console.log(`'${userAnswer}'${games.wrongAnswer}'${correctAnswer}'`);
+      return console.log(`Let's try again, ${userName}!`);
+    }
   }
-  // придумать проверку решения примера
+  return console.log(`Congratulations, ${userName}!`);
 };
+
+playBrainCalc();
