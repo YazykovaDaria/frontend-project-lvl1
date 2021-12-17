@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import readlineSync from 'readline-sync';
-import * as games from '../src/cli.js';
+import * as games from '../src/index.js';
 
 const checkNumberEven = (number) => (number % 2 === 0 ? 'yes' : 'no');
 
