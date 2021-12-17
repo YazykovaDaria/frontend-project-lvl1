@@ -31,14 +31,12 @@ const playBrainCalc = () => {
         break;
       case '*':
         correctAnswer = number1 * number2;
-        break;
-        // почему проверка не срабатывает?
-    } if (userAnswer === correctAnswer) {
-      console.log(games.correct);
-    } else {
+    // почему проверка не срабатывает?
+    } if (userAnswer !== `${correctAnswer}`) {
       console.log(`'${userAnswer}'${games.wrongAnswer}'${correctAnswer}'`);
       return console.log(`Let's try again, ${userName}!`);
     }
+    console.log(games.correct);
   }
   return console.log(`Congratulations, ${userName}!`);
 };
