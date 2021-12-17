@@ -20,3 +20,10 @@ Run
 $ brain-even
 ```
 [![asciicast](https://asciinema.org/a/QLirRw0BB97leA1g3mpCvMWtj.svg)](https://asciinema.org/a/QLirRw0BB97leA1g3mpCvMWtj)
+
+## Is Calc
+Run 
+```sh
+$ brain-calc
+```
+[![asciicast](https://asciinema.org/a/4jVhI7NC7wJ28hEH85ohQzmpu.svg)](https://asciinema.org/a/4jVhI7NC7wJ28hEH85ohQzmpu)
