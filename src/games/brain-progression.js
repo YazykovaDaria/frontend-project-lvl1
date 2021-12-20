@@ -16,3 +16,26 @@ const generationTask = () => {
   }
   return task;
 };
+
+const correctAnswerBrainProgression = (task) => {
+  const taskProgression = task;
+  const separator = ' ';
+  const searchAnswer = taskProgression.split(separator);
+  let correctAnswer;
+  for (let i = 0; i < searchAnswer.length; i += 1) {
+    if (searchAnswer[i] === '..') {
+      const search = searchAnswer[i + 2] - searchAnswer[i + 1];
+      correctAnswer = searchAnswer[i + 1] - search;
+    }
+  }
+  return correctAnswer;
+};
+
+const playBrainProgression = () => {
+  const rulesOfTheGame = 'What number is missing in the progression?';
+  // генерируется только один вариант прогрессии, подумать как исправить
+  const game = games.playGames(rulesOfTheGame, generationTask(), correctAnswerBrainProgression);
+  return game;
+};
+
+export default playBrainProgression;
