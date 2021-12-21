@@ -1,7 +1,7 @@
 import * as utilite from './utilite.js';
 
-export const rulesOftheGame = 'ind the greatest common divisor of given numbers.';
-
+export const rulesOfTheGame = 'Find the greatest common divisor of given numbers.';
+// понимаю что поиск правильного ответа надо как-то упрощать, но не могу додуматься как(
 export const correctAnswer = (string) => {
   const reseveNumber = utilite.getArrayWithString(string);
   let value1 = reseveNumber[0];
