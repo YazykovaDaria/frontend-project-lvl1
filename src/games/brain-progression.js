@@ -1,6 +1,6 @@
 import * as utilite from './utilite.js';
 
-export const rulesOfTheGame = 'What number is missing in the progression';
+export const rulesOfTheGame = 'What number is missing in the progression?';
 
 export const generationTask = () => {
   let startString = utilite.getRandomNumber(1, 100);
