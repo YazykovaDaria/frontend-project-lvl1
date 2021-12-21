@@ -8,10 +8,10 @@ const playGames = (game) => {
   const rulesGames = game.rulesOfTheGame;
   console.log(rulesGames);
   for (let counter = 1; counter < 4; counter += 1) {
-    const task = game.generationTask;
+    const task = game.generationTask();
     console.log(`Question:${task}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    const checkAnswer = game.correctAnswer;
+    const checkAnswer = game.correctAnswer(task);
     if (userAnswer === `${checkAnswer}`) {
       console.log('Correct!');
     } else {
