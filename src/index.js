@@ -1,26 +1,17 @@
 // eslint-disable-next-line max-len
 import readlineSync from 'readline-sync';
 
-export const randomNumber = (maxNumber, minNumber) => {
-  const result = Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
-  return result;
-};
-
-export const question = 'Question: ';
-export const wrongAnswer = ' is wrong answer ;(. Correct answer was ';
-export const correct = 'Correct!';
-
-export const playGames = (rules, task, correctAnswer) => {
+const playGames = (game) => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${userName}!`);
-  const rulesGames = rules;
+  const rulesGames = game.rulesOfTheGame;
   console.log(rulesGames);
-  // не знаю как сделать эту часть экспортируемой чтобы сохранялось имя пользователя
   for (let counter = 1; counter < 4; counter += 1) {
+    const task = game.generationTask;
     console.log(`Question:${task}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    const checkAnswer = correctAnswer(task);
+    const checkAnswer = game.correctAnswer;
     if (userAnswer === `${checkAnswer}`) {
       console.log('Correct!');
     } else {
@@ -30,3 +21,5 @@ export const playGames = (rules, task, correctAnswer) => {
   }
   return console.log(`Congratulations, ${userName}!`);
 };
+
+export default playGames;
