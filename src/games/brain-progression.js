@@ -1,10 +1,12 @@
-import * as games from '../index.js';
+import * as utilite from './utilite.js';
 
-const generationTask = () => {
-  let startString = games.randomNumber(1, 100);
-  const lengthString = games.randomNumber(10, 15);
-  const stepProgression = games.randomNumber(1, 5);
-  const covertNumber = games.randomNumber(0, 10);
+export const rulesOfTheGame = 'What number is missing in the progression';
+
+export const generationTask = () => {
+  let startString = utilite.getRandomNumber(1, 100);
+  const lengthString = utilite.getRandomNumber(10, 15);
+  const stepProgression = utilite.getRandomNumber(1, 5);
+  const covertNumber = utilite.getRandomNumber(0, 10);
   let task = '';
   for (let i = 0; i <= lengthString; i += 1) {
     if (i === covertNumber) {
@@ -17,25 +19,14 @@ const generationTask = () => {
   return task;
 };
 
-const correctAnswerBrainProgression = (task) => {
-  const taskProgression = task;
-  const separator = ' ';
-  const searchAnswer = taskProgression.split(separator);
-  let correctAnswer;
+export const correctAnswer = (task) => {
+  const searchAnswer = utilite.getArrayWithString(task);
+  let answer;
   for (let i = 0; i < searchAnswer.length; i += 1) {
     if (searchAnswer[i] === '..') {
       const search = searchAnswer[i + 2] - searchAnswer[i + 1];
-      correctAnswer = searchAnswer[i + 1] - search;
+      answer = searchAnswer[i + 1] - search;
     }
   }
-  return correctAnswer;
+  return answer;
 };
-
-const playBrainProgression = () => {
-  const rulesOfTheGame = 'What number is missing in the progression?';
-  // генерируется только один вариант прогрессии, подумать как исправить
-  const game = games.playGames(rulesOfTheGame, generationTask(), correctAnswerBrainProgression);
-  return game;
-};
-
-export default playBrainProgression;
