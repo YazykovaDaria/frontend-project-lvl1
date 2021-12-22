@@ -19,9 +19,9 @@ export const generationTask = () => {
 
 export const correctAnswer = (task) => {
   const searchAnswer = utilite.getArrayWithString(task);
-  const number1 = searchAnswer[0];
+  const number1 = Number(searchAnswer[0]);
   const operator = searchAnswer[1];
-  const number2 = searchAnswer[2];
+  const number2 = Number(searchAnswer[2]);
   let answer;
   switch (operator) {
     case '+':
@@ -32,6 +32,7 @@ export const correctAnswer = (task) => {
       break;
     case '*':
       answer = number1 * number2;
+      break;
   }
   return answer;
 };
