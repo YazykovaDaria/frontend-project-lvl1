@@ -7,9 +7,10 @@ const playGames = (game) => {
   console.log(`Hello, ${userName}!`);
   const rulesGames = game.rulesOfTheGame;
   console.log(rulesGames);
-  for (let counter = 1; counter < 4; counter += 1) {
+  const rounds = 3;
+  for (let counter = 1; counter <= rounds; counter += 1) {
     const task = game.generationTask();
-    console.log(`Question:${task}`);
+    console.log(`Question: ${task}`);
     const userAnswer = readlineSync.question('Your answer: ');
     const checkAnswer = game.correctAnswer(task);
     if (userAnswer === `${checkAnswer}`) {
