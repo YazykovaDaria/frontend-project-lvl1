@@ -1,4 +1,4 @@
-import { getRandomNumber } from './utilite.js';
+import getRandomNumber from '../../utilite.js';
 
 export const rulesOfTheGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 

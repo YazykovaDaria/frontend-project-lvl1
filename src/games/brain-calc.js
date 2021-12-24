@@ -1,5 +1,5 @@
 /* eslint-disable default-case */
-import * as utilite from './utilite.js';
+import getRandomNumber from '../../utilite.js';
 
 export const rulesOfTheGame = 'What is the result of the expression?';
 
@@ -10,15 +10,15 @@ const makeOperator = () => {
 };
 
 export const generationTask = () => {
-  const number1 = utilite.getRandomNumber(1, 100);
-  const number2 = utilite.getRandomNumber(1, 100);
+  const number1 = getRandomNumber(1, 100);
+  const number2 = getRandomNumber(1, 100);
   const operator = makeOperator();
   const task = `${number1} ${operator} ${number2}`;
   return task;
 };
 
 export const correctAnswer = (task) => {
-  const searchAnswer = utilite.getArrayWithString(task);
+  const searchAnswer = task.split(' ');
   const number1 = Number(searchAnswer[0]);
   const operator = searchAnswer[1];
   const number2 = Number(searchAnswer[2]);

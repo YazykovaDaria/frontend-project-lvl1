@@ -1,4 +1,4 @@
-import { getRandomNumber } from './utilite.js';
+import getRandomNumber from '../../utilite.js';
 
 export const rulesOfTheGame = 'Answer "yes" if the number is even, otherwise answer "no".';
 
