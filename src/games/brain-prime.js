@@ -1,19 +1,19 @@
-import getRandomNumber from '../../utilite.js';
+import getRandomNumber from '../utilite.js';
 
 export const rulesOfTheGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-export const generationTask = () => {
-  const task = getRandomNumber(1, 100);
-  return task;
-};
-
-export const correctAnswer = (task) => {
-  const searchAnsver = Number(task);
-  const stopSearch = Math.sqrt(searchAnsver);
+const getCorrectAnswer = (number) => {
+  const stopSearch = Math.sqrt(number);
   for (let i = 2; i <= stopSearch; i += 1) {
-    if (searchAnsver % i === 0) {
+    if (number % i === 0) {
       return 'no';
     }
   }
   return 'yes';
+};
+
+export const generateRound = () => {
+  const task = getRandomNumber(1, 100);
+  const correctAnswer = getCorrectAnswer(task);
+  return [task, correctAnswer];
 };

@@ -1,8 +1,20 @@
-import getRandomNumber from '../../utilite.js';
+import getRandomNumber from '../utilite.js';
 
 export const rulesOfTheGame = 'What number is missing in the progression?';
 
-export const generationTask = () => {
+const getCorrectAnswer = (task) => {
+  const searchAnswer = task.split(' ');
+  let answer;
+  for (let i = 0; i < searchAnswer.length; i += 1) {
+    if (searchAnswer[i] === '..') {
+      const search = searchAnswer[i + 2] - searchAnswer[i + 1];
+      answer = searchAnswer[i + 1] - search;
+    }
+  }
+  return answer;
+};
+
+export const generateRound = () => {
   let startString = getRandomNumber(1, 100);
   const lengthString = getRandomNumber(10, 15);
   const stepProgression = getRandomNumber(1, 5);
@@ -16,17 +28,6 @@ export const generationTask = () => {
     task += `${startString} `;
     startString += stepProgression;
   }
-  return task;
-};
-
-export const correctAnswer = (task) => {
-  const searchAnswer = task.split(' ');
-  let answer;
-  for (let i = 0; i < searchAnswer.length; i += 1) {
-    if (searchAnswer[i] === '..') {
-      const search = searchAnswer[i + 2] - searchAnswer[i + 1];
-      answer = searchAnswer[i + 1] - search;
-    }
-  }
-  return answer;
+  const correctAnswer = getCorrectAnswer(task);
+  return [task, correctAnswer];
 };

@@ -1,22 +1,21 @@
 // eslint-disable-next-line max-len
 import readlineSync from 'readline-sync';
 
-const playGames = (game) => {
-  const rounds = 3;
+const rounds = 3;
+
+const playGames = (rulesOfTheGame, generateRound) => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${userName}!`);
-  const rulesGames = game.rulesOfTheGame;
-  console.log(rulesGames);
+  console.log(rulesOfTheGame);
   for (let counter = 1; counter <= rounds; counter += 1) {
-    const task = game.generationTask();
-    console.log(`Question: ${task}`);
+    const [question, correctAnswer] = generateRound();
+    console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    const checkAnswer = game.correctAnswer(task);
-    if (userAnswer === `${checkAnswer}`) {
+    if (userAnswer === `${correctAnswer}`) {
       console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${checkAnswer}'`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
       return console.log(`Let's try again, ${userName}!`);
     }
   }
