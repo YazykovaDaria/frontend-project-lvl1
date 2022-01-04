@@ -1,6 +1,7 @@
 import getRandomNumber from '../utilite.js';
+import playGames from '../index.js';
 
-export const rulesOfTheGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const rulesOfTheGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const getCorrectAnswer = (number) => {
   const stopSearch = Math.sqrt(number);
@@ -12,8 +13,12 @@ const getCorrectAnswer = (number) => {
   return 'yes';
 };
 
-export const generateRound = () => {
+const generateRound = () => {
   const task = getRandomNumber(1, 100);
   const correctAnswer = getCorrectAnswer(task);
   return [task, correctAnswer];
 };
+
+const brainPrime = () => playGames(rulesOfTheGame, generateRound);
+
+export default brainPrime;

@@ -1,6 +1,7 @@
 import getRandomNumber from '../utilite.js';
+import playGames from '../index.js';
 
-export const rulesOfTheGame = 'What number is missing in the progression?';
+const rulesOfTheGame = 'What number is missing in the progression?';
 
 const getCorrectAnswer = (task) => {
   const searchAnswer = task.split(' ');
@@ -14,7 +15,7 @@ const getCorrectAnswer = (task) => {
   return answer;
 };
 
-export const generateRound = () => {
+const generateRound = () => {
   let startString = getRandomNumber(1, 100);
   const lengthString = getRandomNumber(10, 15);
   const stepProgression = getRandomNumber(1, 5);
@@ -31,3 +32,7 @@ export const generateRound = () => {
   const correctAnswer = getCorrectAnswer(task);
   return [task, correctAnswer];
 };
+
+const brainProgression = () => playGames(rulesOfTheGame, generateRound);
+
+export default brainProgression;

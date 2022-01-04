@@ -1,7 +1,8 @@
 /* eslint-disable default-case */
 import getRandomNumber from '../utilite.js';
+import playGames from '../index.js';
 
-export const rulesOfTheGame = 'What is the result of the expression?';
+const rulesOfTheGame = 'What is the result of the expression?';
 
 const getRandomOperator = () => {
   const operators = ['-', '+', '*'];
@@ -25,7 +26,7 @@ const calculate = (number1, number2, operator) => {
   return answer;
 };
 
-export const generateRound = () => {
+const generateRound = () => {
   const number1 = getRandomNumber(1, 100);
   const number2 = getRandomNumber(1, 100);
   const operator = getRandomOperator();
@@ -33,3 +34,7 @@ export const generateRound = () => {
   const correcrAnswer = calculate(number1, number2, operator);
   return [question, correcrAnswer];
 };
+
+const brainCalc = () => playGames(rulesOfTheGame, generateRound);
+
+export default brainCalc;
