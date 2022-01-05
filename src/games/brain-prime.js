@@ -1,5 +1,5 @@
 import getRandomNumber from '../utilite.js';
-import playGames from '../index.js';
+import { playGames, rounds } from '../index.js';
 
 const rulesOfTheGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
@@ -14,11 +14,18 @@ const getCorrectAnswer = (number) => {
 };
 
 const generateRound = () => {
-  const task = getRandomNumber(1, 100);
-  const correctAnswer = getCorrectAnswer(task);
-  return [task, correctAnswer];
+  const gameRaunds = [];
+  for (let counter = 1; counter <= rounds; counter += 1) {
+    const question = getRandomNumber(1, 100);
+    const correctAnswer = getCorrectAnswer(question);
+    const round = [question, correctAnswer];
+    gameRaunds.push(round);
+  }
+  return gameRaunds;
 };
 
-const brainPrime = () => playGames(rulesOfTheGame, generateRound);
+const questionAnswer = generateRound();
+
+const brainPrime = () => playGames(rulesOfTheGame, questionAnswer);
 
 export default brainPrime;
