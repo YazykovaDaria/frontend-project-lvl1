@@ -15,22 +15,27 @@ const getCorrectAnswer = (task) => {
   return answer;
 };
 
+const getQuestion = () => {
+  let startString = getRandomNumber(1, 100);
+  const lengthString = getRandomNumber(10, 15);
+  const stepProgression = getRandomNumber(1, 5);
+  const covertNumber = getRandomNumber(0, 10);
+  let question = '';
+  for (let i = 0; i <= lengthString; i += 1) {
+    if (i === covertNumber) {
+      question += '.. ';
+      startString += stepProgression;
+    }
+    question += `${startString} `;
+    startString += stepProgression;
+  }
+  return question;
+};
+
 const generateRound = () => {
   const gameRaunds = [];
   for (let counter = 1; counter <= rounds; counter += 1) {
-    let startString = getRandomNumber(1, 100);
-    const lengthString = getRandomNumber(10, 15);
-    const stepProgression = getRandomNumber(1, 5);
-    const covertNumber = getRandomNumber(0, 10);
-    let question = '';
-    for (let i = 0; i <= lengthString; i += 1) {
-      if (i === covertNumber) {
-        question += '.. ';
-        startString += stepProgression;
-      }
-      question += `${startString} `;
-      startString += stepProgression;
-    }
+    const question = getQuestion();
     const correctAnswer = getCorrectAnswer(question);
     const round = [question, correctAnswer];
     gameRaunds.push(round);
