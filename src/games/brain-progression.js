@@ -33,18 +33,18 @@ const getQuestion = () => {
 };
 
 const generateRound = () => {
-  const gameRaunds = [];
-  for (let counter = 1; counter <= rounds; counter += 1) {
-    const question = getQuestion();
-    const correctAnswer = getCorrectAnswer(question);
-    const round = [question, correctAnswer];
-    gameRaunds.push(round);
-  }
-  return gameRaunds;
+  const question = getQuestion();
+  const correctAnswer = getCorrectAnswer(question);
+  const round = [question, correctAnswer];
+  return round;
 };
 
-const questionAnswer = generateRound();
-
-const brainProgression = () => playGames(rulesOfTheGame, questionAnswer);
+const brainProgression = () => {
+  const gameRounds = [];
+  for (let counter = 1; counter <= rounds; counter += 1) {
+    gameRounds.push(generateRound());
+  }
+  playGames(rulesOfTheGame, gameRounds);
+};
 
 export default brainProgression;

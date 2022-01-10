@@ -12,20 +12,20 @@ const gcd = (number1, number2) => {
 };
 
 const generateRound = () => {
-  const gameRaunds = [];
-  for (let counter = 1; counter <= rounds; counter += 1) {
-    const number1 = getRandomNumber(1, 100);
-    const number2 = getRandomNumber(1, 100);
-    const question = `${number1} ${number2}`;
-    const correctAnswer = gcd(number1, number2);
-    const round = [question, correctAnswer];
-    gameRaunds.push(round);
-  }
-  return gameRaunds;
+  const number1 = getRandomNumber(1, 100);
+  const number2 = getRandomNumber(1, 100);
+  const question = `${number1} ${number2}`;
+  const correctAnswer = gcd(number1, number2);
+  const round = [question, correctAnswer];
+  return round;
 };
 
-const questionAnswer = generateRound();
-
-const brainGcd = () => playGames(rulesOfTheGame, questionAnswer);
+const brainGcd = () => {
+  const gameRounds = [];
+  for (let counter = 1; counter <= rounds; counter += 1) {
+    gameRounds.push(generateRound());
+  }
+  playGames(rulesOfTheGame, gameRounds);
+};
 
 export default brainGcd;

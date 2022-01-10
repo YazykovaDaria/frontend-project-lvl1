@@ -6,10 +6,7 @@ const rulesOfTheGame = 'What is the result of the expression?';
 
 const operators = ['-', '+', '*'];
 
-const getRandomOperator = () => {
-  const randomOperator = operators[Math.floor(Math.random() * operators.length)];
-  return randomOperator;
-};
+const randomOperator = operators[Math.floor(Math.random() * operators.length)];
 
 const calculate = (number1, number2, operator) => {
   switch (operator) {
@@ -21,27 +18,27 @@ const calculate = (number1, number2, operator) => {
 
     case '*':
       return number1 * number2;
+    default:
+      throw new Error('unsupported operator');
   }
-  return null;
 };
 
 const generateRound = () => {
   const number1 = getRandomNumber(1, 100);
   const number2 = getRandomNumber(1, 100);
-  const operator = getRandomOperator();
+  const operator = randomOperator;
   const question = `${number1} ${operator} ${number2}`;
   const correctAnswer = calculate(number1, number2, operator);
   const round = [question, correctAnswer];
-  // gameRounds.push(round);
   return round;
 };
 
 const brainCalc = () => {
   const gameRounds = [];
   for (let counter = 1; counter <= rounds; counter += 1) {
-    const round = generateRound();
-    gameRounds.push(round);
+    gameRounds.push(generateRound());
   }
   playGames(rulesOfTheGame, gameRounds);
 };
+
 export default brainCalc;

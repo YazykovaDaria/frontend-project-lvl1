@@ -3,21 +3,21 @@ import { playGames, rounds } from '../index.js';
 
 const rulesOfTheGame = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const getCorrectAnswer = (number) => (number % 2 === 0 ? 'yes' : 'no');
+const getCorrectAnswer = (number) => (number % 2 === 0);
 
 const generateRound = () => {
-  const gameRaunds = [];
-  for (let counter = 1; counter <= rounds; counter += 1) {
-    const task = getRandomNumber(1, 100);
-    const correctAnswer = getCorrectAnswer(task);
-    const round = [task, correctAnswer];
-    gameRaunds.push(round);
-  }
-  return gameRaunds;
+  const task = getRandomNumber(1, 100);
+  const correctAnswer = getCorrectAnswer(task) ? 'yes' : 'no';
+  const round = [task, correctAnswer];
+  return round;
 };
 
-const gameRaunds = generateRound();
-
-const brainEven = () => playGames(rulesOfTheGame, gameRaunds);
+const brainEven = () => {
+  const gameRounds = [];
+  for (let counter = 1; counter <= rounds; counter += 1) {
+    gameRounds.push(generateRound());
+  }
+  playGames(rulesOfTheGame, gameRounds);
+};
 
 export default brainEven;
