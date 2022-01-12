@@ -27,8 +27,7 @@ const generateRound = () => {
   const operator = randomOperator;
   const question = `${number1} ${operator} ${number2}`;
   const correctAnswer = calculate(number1, number2, operator);
-  const round = [question, correctAnswer];
-  return round;
+  return [question, correctAnswer];
 };
 
 const brainCalc = () => {

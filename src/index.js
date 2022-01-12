@@ -9,12 +9,13 @@ export const playGames = (rulesOfTheGame, questionsAnswers) => {
   console.log(`Hello, ${userName}!`);
   console.log(rulesOfTheGame);
   for (let counter = 0; counter < rounds; counter += 1) {
-    console.log(`Question: ${questionsAnswers[counter][0]}`);
+    const [question, answer] = questionsAnswers[counter];
+    console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    if (userAnswer === `${questionsAnswers[counter][1]}`) {
+    if (userAnswer === `${answer}`) {
       console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${questionsAnswers[counter][1]}'`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'`);
       return console.log(`Let's try again, ${userName}!`);
     }
   }

@@ -16,8 +16,7 @@ const generateRound = () => {
   const number2 = getRandomNumber(1, 100);
   const question = `${number1} ${number2}`;
   const correctAnswer = gcd(number1, number2);
-  const round = [question, correctAnswer];
-  return round;
+  return [question, correctAnswer];
 };
 
 const brainGcd = () => {

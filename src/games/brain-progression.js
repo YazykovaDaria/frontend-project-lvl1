@@ -3,40 +3,26 @@ import { playGames, rounds } from '../index.js';
 
 const rulesOfTheGame = 'What number is missing in the progression?';
 
-const getCorrectAnswer = (task) => {
-  const searchAnswer = task.split(' ');
-  let answer;
-  for (let i = 0; i < searchAnswer.length; i += 1) {
-    if (searchAnswer[i] === '..') {
-      const search = searchAnswer[i + 2] - searchAnswer[i + 1];
-      answer = searchAnswer[i + 1] - search;
-    }
-  }
-  return answer;
-};
+const endProgression = 12;
 
-const getQuestion = () => {
-  let startString = getRandomNumber(1, 100);
-  const lengthString = getRandomNumber(10, 15);
+const getProgression = () => {
+  const startString = getRandomNumber(1, 100);
   const stepProgression = getRandomNumber(1, 5);
-  const covertNumber = getRandomNumber(0, 10);
-  let question = '';
-  for (let i = 0; i <= lengthString; i += 1) {
-    if (i === covertNumber) {
-      question += '.. ';
-      startString += stepProgression;
-    }
-    question += `${startString} `;
-    startString += stepProgression;
+  const progression = [];
+  for (let i = 0; i <= endProgression; i += 1) {
+    const result = startString + (stepProgression * i);
+    progression.push(result);
   }
-  return question;
+  return progression;
 };
 
 const generateRound = () => {
-  const question = getQuestion();
-  const correctAnswer = getCorrectAnswer(question);
-  const round = [question, correctAnswer];
-  return round;
+  const covertNumber = getRandomNumber(0, 12);
+  const progression = getProgression();
+  const correctAnswer = progression[covertNumber];
+  progression[covertNumber] = '..';
+  const question = progression.join(' ');
+  return [question, correctAnswer];
 };
 
 const brainProgression = () => {

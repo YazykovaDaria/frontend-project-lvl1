@@ -16,8 +16,7 @@ const getCorrectAnswer = (number) => {
 const generateRound = () => {
   const question = getRandomNumber(1, 100);
   const correctAnswer = getCorrectAnswer(question) ? 'yes' : 'no';
-  const round = [question, correctAnswer];
-  return round;
+  return [question, correctAnswer];
 };
 
 const brainPrime = () => {

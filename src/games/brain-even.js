@@ -8,8 +8,7 @@ const getCorrectAnswer = (number) => (number % 2 === 0);
 const generateRound = () => {
   const task = getRandomNumber(1, 100);
   const correctAnswer = getCorrectAnswer(task) ? 'yes' : 'no';
-  const round = [task, correctAnswer];
-  return round;
+  return [task, correctAnswer];
 };
 
 const brainEven = () => {
